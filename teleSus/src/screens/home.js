@@ -1,19 +1,9 @@
-import { Button, StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Importe o hook
+import { View, Text, Button } from 'react-native';
 
-export default function home() {
-  const navigation = useNavigation(); // Instancie o hook
-
+export default function Home() {
   return (
-    <>
     <View>
-        <Text>Login</Text>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
-      >
-        <Text>Home</Text>
-      </TouchableOpacity>
-      </View>
-    </>
+        
+    </View>
   );
 }
