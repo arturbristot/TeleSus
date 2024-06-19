@@ -8,7 +8,7 @@ import Login from "./src/screens/Login";
 import Home from "./src/screens/logado/Home";
 import Perfil from "./src/screens/logado/Perfil";
 import Config from "./src/screens/logado/Config";
-import cadastrarUsuario from './src/screens/CadastrarUsuario';
+import cadastrarUsuario from './src/screens/CadastrarHorario';
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
