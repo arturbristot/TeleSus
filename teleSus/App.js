@@ -8,6 +8,7 @@ import Login from "./src/screens/Login";
 import Home from "./src/screens/logado/Home";
 import Perfil from "./src/screens/logado/Perfil";
 import Config from "./src/screens/logado/Config";
+import cadastrarUsuario from './src/screens/CadastrarUsuario';
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -55,14 +56,16 @@ function HomeTabs() {
       />
     </Tab.Navigator>
   );
-}
+}x
 
 export default function App() {
   const Stack = createStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}
+      initialRouteName="cadastrarUsuario">
+        <Stack.screen name="cadastrarUsuario" component={cadastrarUsuario} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
       </Stack.Navigator>
