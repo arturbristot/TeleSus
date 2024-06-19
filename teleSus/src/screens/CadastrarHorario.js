@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
   texto: {
     fontSize: 18,
     textAlign: 'center',
+    color: '#2195F3'
   },
   botoes: {
     height: 30,
