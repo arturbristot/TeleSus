@@ -28,16 +28,13 @@ export default function Login() {
           <TextInput placeholder="Email" style={styles.input} />
           <TextInput placeholder="Senha" style={styles.input} />
         </View>
-        <TouchableOpacity onPress={()=>{navigation.navigate("CadastrarUsuario")}}>
-          <Text style={styles.recuperar}>Criar conta</Text>
-        </TouchableOpacity>
         <TouchableOpacity onPress={()=>{navigation.navigate("Home")}} style={styles.btlogin}>
           <Text style={styles.txtlogin}>Login</Text>
         </TouchableOpacity>
         <View style={styles.criar}>
-          <TouchableOpacity>
-            <Text style={styles.txtcriar}>Criar conta</Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={()=>{navigation.navigate("CadastrarUsuario")}}>
+          <Text style={styles.recuperar}>Criar conta</Text>
+        </TouchableOpacity>
         </View>
         <View style={styles.barra}></View>
       </View>
@@ -117,6 +114,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    marginTop: 23
   },
   txtlogin: {
     color: "white",

@@ -1,12 +1,34 @@
-import { View, Text, StyleSheet, TextInput, Button } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Importe o hook
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 
 export default function Home() {
-  const navigation = useNavigation(); // Instancie o hook
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <Image style={styles.image} source={require("../../images/medicine_icon.png")} />
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("CadastrarHorario")}
+        >
+          <Text style={styles.txtbutton}>Cadastrar Horário</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Teste")}
+        >
+          <Text style={styles.txtbutton}>Horários Agendados</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Suporte")}
+        >
+          <Text style={styles.txtbutton}>Suporte</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -14,6 +36,27 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: 150,
+    height: 150,
+    marginBottom: 40,
+  },
+  buttonContainer: {
+    width: "80%",
+  },
+  button: {
+    backgroundColor: "#2196F3",
+    padding: 15,
+    marginBottom: 20,
+    borderRadius: 10,
+    alignItems: "center",
+  },
+  txtbutton: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 18,
   },
 });

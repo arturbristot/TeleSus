@@ -8,6 +8,7 @@ import Login from "./src/screens/Login";
 import Home from "./src/screens/logado/Home";
 import Perfil from "./src/screens/logado/Perfil";
 import Config from "./src/screens/logado/Config";
+import CadastrarHorario from "./src/screens/logado/CadastrarHorario";
 
 import CadastrarUsuario from "./src/screens/logado/CadastrarUsuario";
 
@@ -70,6 +71,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="CadastrarUsuario" component={CadastrarUsuario} />
+        <Stack.Screen name="CadastrarHorario" component={CadastrarHorario} />
       </Stack.Navigator>
     </NavigationContainer>
   );
