@@ -28,8 +28,8 @@ export default function Login() {
           <TextInput placeholder="Email" style={styles.input} />
           <TextInput placeholder="Senha" style={styles.input} />
         </View>
-        <TouchableOpacity>
-          <Text style={styles.recuperar}>Esqueci a senha</Text>
+        <TouchableOpacity onPress={()=>{navigation.navigate("CadastrarUsuario")}}>
+          <Text style={styles.recuperar}>Criar conta</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={()=>{navigation.navigate("Home")}} style={styles.btlogin}>
           <Text style={styles.txtlogin}>Login</Text>

@@ -4,7 +4,11 @@ import { useNavigation } from "@react-navigation/native"; // Importe o hook
 export default function Config() {
   const navigation = useNavigation(); // Instancie o hook
 
-  return <View style={styles.container}></View>;
+  return (
+    <View style={styles.container}>
+      <Text>Config</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

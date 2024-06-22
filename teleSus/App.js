@@ -9,6 +9,10 @@ import Home from "./src/screens/logado/Home";
 import Perfil from "./src/screens/logado/Perfil";
 import Config from "./src/screens/logado/Config";
 
+import CadastrarUsuario from "./src/screens/logado/CadastrarUsuario";
+
+
+
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
@@ -65,6 +69,7 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
+        <Stack.Screen name="CadastrarUsuario" component={CadastrarUsuario} />
       </Stack.Navigator>
     </NavigationContainer>
   );
