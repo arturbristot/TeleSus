@@ -28,20 +28,50 @@ export default function CadastrarUsuario() {
 
   return (
     <View style={styles.container}>
-      <Text>Cadastrar Usuario</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={(text) => setEmail(text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Senha"
-        onChangeText={(text) => setPassword(text)}
-      />
-      <TouchableOpacity style={styles.btn} onPress={NovoUsuario}>
-        <Text>Cadastrar</Text>
-      </TouchableOpacity>
+      <View style={styles.vlogo}>
+        <View style={styles.casetxt}>
+          <Text style={styles.tittle}>TeleSUS</Text>
+          <Text style={styles.description}>
+            Seu atendimento. Rápido e na hora certa.
+          </Text>
+        </View>
+      </View>
+
+      <View style={styles.vform}>
+        <Text style={styles.intro}>Ótimo ter você aqui</Text>
+        <View style={styles.vinput}>
+          <TextInput
+            placeholder="Email"
+            style={styles.input}
+            onChangeText={setEmail}
+            value={email}
+          />
+          <TextInput
+            placeholder="Senha"
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+          />
+        </View>
+        <TouchableOpacity
+          onPress={() => {LoginUser()}}
+          style={styles.btlogin}
+        >
+          <Text style={styles.txtlogin}>Criar conta</Text>
+        </TouchableOpacity>
+        <View style={styles.criar}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("CadastrarUsuario");
+            }}
+          >
+          </TouchableOpacity>
+        </View>
+        <View style={styles.barra}></View>
+      </View>
+
+      <View style={styles.vlogin}>
+      </View>
     </View>
   );
 }
@@ -49,7 +79,105 @@ export default function CadastrarUsuario() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    alignItems: "center",
+    backgroundColor: "white",
+  },
+  vlogo: {
+    display: "flex",
+    marginTop: 55,
+    backgroundColor: "white",
+    height: 300,
+    width: "85%",
+  },
+  tittle: { fontSize: 75, color: "#006FFD", marginTop: 10 },
+  description: { fontSize: 15, color: "#7F7F7F" },
+  casetxt: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    marginTop: "20%",
   },
 
+  vform: {
+    height: 300,
+    width: "85%",
+
+    display: "flex",
+    alignItems: "center",
+  },
+  intro: {
+    fontSize: 20,
+    color: "black",
+    fontWeight: "bold",
+    color: "#006FFD",
+  },
+  vinput: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+  },
+  input: {
+    width: "100%",
+    height: 50,
+    borderRadius: 10,
+
+    borderColor: "#c5c6cc",
+    borderWidth: 1,
+    borderStyle: "dotted",
+
+    marginTop: 23,
+    paddingLeft: 10,
+  },
+  recuperar: {
+    color: "#006FFD",
+    marginTop: 23,
+    marginBottom: 23,
+    fontSize: 14,
+    fontWeight: "bold",
+  },
+
+  btlogin: {
+    backgroundColor: "#006FFD",
+    width: "100%",
+    height: 50,
+    borderRadius: 10,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 23,
+  },
+  txtlogin: {
+    color: "white",
+    fontSize: 14,
+  },
+  criar: {
+    width: "100%",
+    display: "flex",
+    alignItems: "center",
+  },
+  txtcriar: {
+    color: "#006FFD",
+    fontSize: 14,
+    marginTop: 15,
+  },
+  barra: {
+    display: "flex",
+    backgroundColor: "#c5c6cc",
+    width: "100%",
+    height: 0.8,
+    marginTop: 50,
+    opacity: 0.5,
+  },
+  vlogin: {
+    marginTop: 50,
+    height: 200,
+    width: "85%",
+
+    display: "flex",
+    alignItems: "center",
+  },
+  continuar: {
+    color: "#c5c6cc",
+    marginTop: 20,
+  },
 });
