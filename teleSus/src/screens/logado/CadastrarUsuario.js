@@ -1,7 +1,6 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Importe o hook
-
-import React, { useState } from "react";
+import { useState  } from "react";
 import { auth } from "../../config/firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 

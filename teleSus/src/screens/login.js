@@ -7,9 +7,44 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Importe o hook
+import { useState, useEffect } from "react";
+import { auth, onAuthStateChanged } from "../config/firebaseconfig";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function Login() {
   const navigation = useNavigation(); // Instancie o hook
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const LoginUser = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("User logged in:", userCredential.user);
+      navigation.navigate("Home", { idUser: userCredential.user.uid });
+    } catch (error) {
+      console.error("Error logging in:", error);
+      //Alert.alert('Error', error.message);
+      setError(true);
+    }
+  };
+  
+  
+  useEffect(() => {
+    const statusAuth = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        navigation.navigate("Home", { idUser: user.uid });
+      }
+    });
+
+    return () => statusAuth();
+  }, []);
+  
 
   return (
     <View style={styles.container}>
@@ -25,16 +60,33 @@ export default function Login() {
       <View style={styles.vform}>
         <Text style={styles.intro}>Bem vindo</Text>
         <View style={styles.vinput}>
-          <TextInput placeholder="Email" style={styles.input} />
-          <TextInput placeholder="Senha" style={styles.input} />
+          <TextInput
+            placeholder="Email"
+            style={styles.input}
+            onChangeText={setEmail}
+            value={email}
+          />
+          <TextInput
+            placeholder="Senha"
+            style={styles.input}
+            onChangeText={setPassword}
+            value={password}
+          />
         </View>
-        <TouchableOpacity onPress={()=>{navigation.navigate("Home")}} style={styles.btlogin}>
+        <TouchableOpacity
+          onPress={() => {LoginUser()}}
+          style={styles.btlogin}
+        >
           <Text style={styles.txtlogin}>Login</Text>
         </TouchableOpacity>
         <View style={styles.criar}>
-        <TouchableOpacity onPress={()=>{navigation.navigate("CadastrarUsuario")}}>
-          <Text style={styles.recuperar}>Criar conta</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("CadastrarUsuario");
+            }}
+          >
+            <Text style={styles.recuperar}>Criar conta</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.barra}></View>
       </View>
@@ -114,7 +166,7 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 23
+    marginTop: 23,
   },
   txtlogin: {
     color: "white",

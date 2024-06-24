@@ -6,6 +6,7 @@ import {
   doc,
   deleteDoc,
   addDoc,
+  updateDoc,
 } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -35,4 +36,5 @@ export {
   addDoc,
   auth,
   onAuthStateChanged,
+  updateDoc,
 };

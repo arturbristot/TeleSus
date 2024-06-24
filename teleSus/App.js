@@ -22,7 +22,6 @@ function HomeTabs() {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
-      initialRouteName="Home"
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: "black-100",
@@ -32,7 +31,7 @@ function HomeTabs() {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="HomeBottom"
         component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -66,8 +65,8 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <NavigationContainer >
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="CadastrarUsuario" component={CadastrarUsuario} />
