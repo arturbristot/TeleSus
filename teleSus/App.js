@@ -1,10 +1,17 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator} from "@react-navigation/bottom-tabs"
 import { NavigationContainer } from "@react-navigation/native";
+
+//Icons: AntDesign
+import { AntDesign } from '@expo/vector-icons';
+
+//Import BottomTabs
+import Home from "./src/screens/home";
+import Perfil from "./src/screens/perfil";
+import Config from "./src/screens/config";
 
 //Imports Stack
 import Login from "./src/screens/login";
-import Home from "./src/screens/home";
-import Perfil from "./src/screens/perfil";
 import CadastrarHorario from './src/screens/CadastrarHorario';
 import Teste from './src/screens/teste'
 import Suporte from "./src/screens/suporte";
@@ -19,8 +26,8 @@ function HomeTabs() {
         options={{
           headerShown: false,
           tabBarShowLabel: true,
-          tabBarActiveTintColor: "green",
-          tabBarInactiveTintColor: "lightgreen",
+          tabBarActiveTintColor: "#2196F3",
+          tabBarInactiveTintColor: "lightblue",
           tabBarIcon: ({ color, size }) => (
             <AntDesign name="home" size={size} color={color} />
           ),
@@ -32,10 +39,10 @@ function HomeTabs() {
         options={{
           headerShown: false,
           tabBarShowLabel: true,
-          tabBarActiveTintColor: "green",
-          tabBarInactiveTintColor: "lightgreen",
+          tabBarActiveTintColor: "#2196F3",
+          tabBarInactiveTintColor: "lightblue",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="ticket-outline" size={size} color={color} />
+            <AntDesign name="profile" size={size} color={color} />
           ),
         }}
       />
@@ -45,10 +52,10 @@ function HomeTabs() {
         options={{
           headerShown: false,
           tabBarShowLabel: true,
-          tabBarActiveTintColor: "green",
-          tabBarInactiveTintColor: "lightgreen",
+          tabBarActiveTintColor: "#2196F3",
+          tabBarInactiveTintColor: "lightblue",
           tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="login" size={size} color={color} />
+            <AntDesign name="setting" size={size} color={color} />
           ),
         }}
       />
@@ -66,7 +73,7 @@ export default function App() {
         <Stack.Screen name="Login"
         component={Login}
         options={{
-          title: "Login",
+          title: "TeleSUS",
           headerStyle: {
             backgroundColor: 'white', // Background color of the header
           },
@@ -99,7 +106,7 @@ export default function App() {
         />
         <Stack.Screen 
         name="Home"
-        component={Home}
+        component={HomeTabs}
         options={{
           title: "Home",
           headerStyle: {
