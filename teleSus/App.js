@@ -31,7 +31,7 @@ function HomeTabs() {
       }}
     >
       <Tab.Screen
-        name="HomeBottom"
+        name="Home"
         component={Home}
         options={{
           tabBarIcon: ({ color, size }) => (
@@ -70,7 +70,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="CadastrarUsuario" component={CadastrarUsuario} />
-        <Stack.Screen name="CadastrarHorario" component={CadastrarHorario} />
+        <Stack.Screen name="CadastrarHorario" component={CadastrarHorario} options={{headerShown: true}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

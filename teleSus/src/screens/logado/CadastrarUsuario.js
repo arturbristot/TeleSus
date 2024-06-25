@@ -1,6 +1,13 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Importe o hook
-import { useState  } from "react";
+import { useState } from "react";
 import { auth } from "../../config/firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
@@ -41,37 +48,31 @@ export default function CadastrarUsuario() {
         <Text style={styles.intro}>Ótimo ter você aqui</Text>
         <View style={styles.vinput}>
           <TextInput
-            placeholder="Email"
             style={styles.input}
-            onChangeText={setEmail}
+            placeholder="Email"
+            onChangeText={(text) => setEmail(text)}
             value={email}
           />
           <TextInput
             placeholder="Senha"
             style={styles.input}
-            onChangeText={setPassword}
+            onChangeText={(text) => setPassword(text)}
             value={password}
           />
         </View>
         <TouchableOpacity
-          onPress={() => {LoginUser()}}
+          onPress={() => {
+            NovoUsuario();
+          }}
           style={styles.btlogin}
         >
           <Text style={styles.txtlogin}>Criar conta</Text>
         </TouchableOpacity>
-        <View style={styles.criar}>
-          <TouchableOpacity
-            onPress={() => {
-              navigation.navigate("CadastrarUsuario");
-            }}
-          >
-          </TouchableOpacity>
-        </View>
+
         <View style={styles.barra}></View>
       </View>
 
-      <View style={styles.vlogin}>
-      </View>
+      <View style={styles.vlogin}></View>
     </View>
   );
 }
