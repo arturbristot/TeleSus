@@ -83,22 +83,6 @@ export default function Info() {
             color="#0D47A1"
           />
         </View>
-
-        <View style={styles.info4}>
-          <Ionicons
-            name="exit-outline"
-            style={styles.icon}
-            size={24}
-            color="red"
-          />
-          <Text style={[styles.text2]}>Sair da Conta: </Text>
-          <AntDesign
-            style={styles.iconset2}
-            name="right"
-            size={24}
-            color="red"
-          />
-        </View>
       </View>
     </View>
   );

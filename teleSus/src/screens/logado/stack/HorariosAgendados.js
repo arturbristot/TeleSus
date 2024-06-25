@@ -2,11 +2,9 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
-  Button,
+  TouchableOpacity,
   FlatList,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native"; // Importe o hook
 import {
   collection,
   addDoc,
@@ -16,8 +14,10 @@ import {
 import { useEffect, useState } from "react";
 import { onSnapshot, query, where } from "firebase/firestore";
 
+import { AntDesign } from "@expo/vector-icons";
+
 export default function Config() {
-  const [horarios, setHorarios] = useState([]); 
+  const [horarios, setHorarios] = useState([]);
   useEffect(() => {
     const user = auth.currentUser;
     if (!user) {
@@ -37,7 +37,6 @@ export default function Config() {
     });
 
     return () => unsubscribe();
-
   }, []);
 
   return (
@@ -45,7 +44,21 @@ export default function Config() {
       <FlatList
         showsVerticalScrollIndicator={false}
         data={horarios}
-
+        renderItem={({ item }) => (
+          <View style={styles.item}>
+            <TouchableOpacity onPress={() => openModal(item.horario)}><AntDesign name="calendar" size={22} color="white" />
+            </TouchableOpacity>
+            <Text style={styles.text}>{item.medico}</Text>
+            <View style={styles.acoes}>
+              <TouchableOpacity style={styles.icone}>
+                <AntDesign name="edit" size={22} color="white" />
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.icone}>
+                <AntDesign name="delete" size={22} color="white" />
+              </TouchableOpacity>
+            </View>
+          </View>
+        )}
       />
     </View>
   );
@@ -56,4 +69,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  item: {
+    backgroundColor: "#0D47A1",
+    padding: 20,
+    marginVertical: 8,
+    marginHorizontal: 16,
+    borderRadius: 8,
+
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  text: {
+    fontSize: 18,
+    color: "#fff",
+  },
+  acoes: {
+    display: "flex",
+    flexDirection: "row",
+  },
+  icone:{
+    marginLeft: 15,
+  }
 });

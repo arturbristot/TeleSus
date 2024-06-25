@@ -4,11 +4,20 @@ import { Calendar } from "react-native-calendars";
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 
-import { collection, addDoc, auth, database } from "../../../config/firebaseconfig";
+import {
+  collection,
+  addDoc,
+  auth,
+  database,
+} from "../../../config/firebaseconfig";
+import { TextInput } from "react-native-gesture-handler";
 
 const CadastrarHorario = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
+  const [selectedMedico, setSelectedMedico] = useState("");
+  const [observação, setObservação] = useState("");
+
   const data = selectedDate + " " + selectedTime;
 
   const handleDateSelect = (day) => {
@@ -16,7 +25,6 @@ const CadastrarHorario = () => {
   };
 
   async function submitCadastro() {
-    
     // Função para submeter cadastro
     console.log("Data Selecionada: ", data);
     const user = auth.currentUser;
@@ -26,6 +34,8 @@ const CadastrarHorario = () => {
     const consultaCollection = collection(database, "consultas");
     await addDoc(consultaCollection, {
       data: data,
+      medico: selectedMedico,
+      observação: observação,
       usuarioUid: user.uid,
     });
   }
@@ -43,11 +53,12 @@ const CadastrarHorario = () => {
       </View>
       <View style={styles.barra}></View>
       <View style={styles.cad}>
-        <View style={styles.horarios}>
+        <View style={styles.pickers}>
           <Picker
             selectedValue={selectedTime}
-            style={styles.picker}
-            onValueChange={(itemValue, itemIndex) => setSelectedTime(itemValue)}
+            style={styles.pickerh}
+            itemStyle={{ fontSize: 16 }}
+            onValueChange={(itemValue) => setSelectedTime(itemValue)}
           >
             <Picker.Item label="08:00" value="08:00" />
             <Picker.Item label="09:00" value="09:00" />
@@ -64,7 +75,28 @@ const CadastrarHorario = () => {
             <Picker.Item label="20:00" value="20:00" />
             <Picker.Item label="21:00" value="21:00" />
           </Picker>
+
+          <View style={styles.smed}>
+            <Picker
+              selectedValue={selectedMedico}
+              style={{ height: 50, width: 180 }}
+              itemStyle={{ fontSize: 16 }}
+              onValueChange={(itemValue) => setSelectedMedico(itemValue)}
+            >
+              <Picker.Item label="C.Geral" value="C.Geral" />
+              <Picker.Item label="Cardiologista" value="Cardiologista" />
+              <Picker.Item label="Dermatologista" value="Dermatologista" />
+              <Picker.Item label="Endocrinologista" value="Endocrinologista" />
+              <Picker.Item label="Ginecologista" value="Ginecologista" />
+            </Picker>
+          </View>
         </View>
+
+        <TextInput
+          placeholder="Observação..."
+          style={styles.input}
+          onChangeText={(text) => setObservação(text)}
+        />
 
         <View>
           <TouchableOpacity
@@ -83,9 +115,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
     padding: 20,
-    backgroundColor: '#fff'
+    backgroundColor: "#fff",
   },
 
   texto: {
@@ -98,9 +129,14 @@ const styles = StyleSheet.create({
     width: 350,
     height: 350,
   },
-  picker: {
+  pickerh: {
     height: 200,
     width: 130,
+    fontSize: 2,
+  },
+  pickers: {
+    display: "flex",
+    flexDirection: "row",
   },
   cadastrarUsuario: {
     marginTop: 10,
@@ -122,7 +158,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "space-between",
   },
   barra: {
@@ -132,6 +168,14 @@ const styles = StyleSheet.create({
     height: 0.8,
     marginTop: 19,
     opacity: 0.5,
+  },
+  input: {
+    width: 300,
+    height: 50,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#2195F3",
+    borderRadius: 4,
   },
 });
 
