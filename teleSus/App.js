@@ -9,10 +9,8 @@ import Home from "./src/screens/logado/bottomTabs/Home";
 import Perfil from "./src/screens/logado/bottomTabs/Perfil";
 import Config from "./src/screens/logado/bottomTabs/Config";
 import CadastrarHorario from "./src/screens/logado/stack/CadastrarHorario";
-
 import CadastrarUsuario from "./src/screens/logado/stack/CadastrarUsuario";
-
-
+import HorariosAgendados from "./src/screens/logado/stack/HorariosAgendados";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -65,12 +63,24 @@ export default function App() {
   const Stack = createStackNavigator();
 
   return (
-    <NavigationContainer >
-      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Login"
+        screenOptions={{ headerShown: false }}
+      >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
         <Stack.Screen name="CadastrarUsuario" component={CadastrarUsuario} />
-        <Stack.Screen name="CadastrarHorario" component={CadastrarHorario} options={{headerShown: true}} />
+        <Stack.Screen
+          name="CadastrarHorario"
+          component={CadastrarHorario}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="HorariosAgendados"
+          component={HorariosAgendados}
+          options={{ headerShown: true }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -4,18 +4,30 @@ import { Calendar } from "react-native-calendars";
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 
+import { collection, addDoc, auth, database } from "../../../config/firebaseconfig";
+
 const CadastrarHorario = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
+  const data = selectedDate +" " + selectedTime;
 
   const handleDateSelect = (day) => {
     setSelectedDate(day.dateString);
   };
 
-  function submitCadastro() {
+  async function submitCadastro() {
+    
     // Função para submeter cadastro
-    console.log("Data Selecionada: ", selectedDate);
-    console.log("Hora Selecionada: ", selectedTime);
+    console.log("Data Selecionada: ", data);
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("Usuário não encontrado");
+    }
+    const consultaCollection = collection(database, "consultas");
+    await addDoc(consultaCollection, {
+      data: data,
+      usuarioUid: user.uid,
+    });
   }
 
   return (

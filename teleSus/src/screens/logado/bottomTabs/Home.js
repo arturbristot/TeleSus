@@ -12,7 +12,7 @@ export default function Home() {
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastrarHorario')}>
           <Text style={styles.txtbutton}>Cadastrar Horário</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Teste')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('HorariosAgendados')}>
           <Text style={styles.txtbutton}>Horários Agendados</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Suporte')}>
