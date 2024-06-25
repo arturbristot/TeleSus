@@ -7,6 +7,7 @@ import Home from "./src/screens/home";
 import Perfil from "./src/screens/perfil";
 import CadastrarHorario from './src/screens/CadastrarHorario';
 import Teste from './src/screens/teste'
+import Suporte from "./src/screens/suporte";
 
 function HomeTabs() {
   const Tab = createBottomTabNavigator();
@@ -79,6 +80,23 @@ export default function App() {
           },
         }}
       />
+      <Stack.Screen name="Suporte"
+          component={Suporte}
+          options={{
+            title: "Suporte",
+            headerStyle: {
+              backgroundColor: 'white', // Background color of the header
+            },
+            headerTintColor: '#2196F3', // Color of the header text
+            headerTitleStyle: {
+              fontWeight: 'bold', // Title font weight
+            },
+            headerBackTitle: "Voltar", // Text for the back button
+            headerBackTitleStyle: {
+              color: 'white', // Color of the back button text
+            },
+          }}
+        />
         <Stack.Screen 
         name="Home"
         component={Home}
