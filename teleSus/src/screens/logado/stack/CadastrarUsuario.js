@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Importe o hook
 import { useState } from "react";
-import { auth } from "../../config/firebaseconfig";
+import { auth } from "../../../config/firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function CadastrarUsuario() {

@@ -15,7 +15,7 @@ export default function Perfil() {
   return (
     <View style={styles.container}>
       <View style={styles.vlogo}>
-        <Image source={require('../../images/perfil.png')} style={styles.perfil} />
+        <Image source={require('../../../images/perfil.png')} style={styles.perfil} />
         {isTextInputVisible && (
           <TextInput
             style={styles.textInput}

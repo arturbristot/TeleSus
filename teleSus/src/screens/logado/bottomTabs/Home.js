@@ -7,7 +7,7 @@ export default function Home() {
   const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <Image source={require('../../images/logo.png')} style={styles.logo} />
+      <Image source={require('../../../images/logo.png')} style={styles.logo} />
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastrarHorario')}>
           <Text style={styles.txtbutton}>Cadastrar Horário</Text>

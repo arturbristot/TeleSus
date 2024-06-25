@@ -5,12 +5,12 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import "react-native-gesture-handler";
 
 import Login from "./src/screens/Login";
-import Home from "./src/screens/logado/Home";
-import Perfil from "./src/screens/logado/Perfil";
-import Config from "./src/screens/logado/Config";
-import CadastrarHorario from "./src/screens/logado/CadastrarHorario";
+import Home from "./src/screens/logado/bottomTabs/Home";
+import Perfil from "./src/screens/logado/bottomTabs/Perfil";
+import Config from "./src/screens/logado/bottomTabs/Config";
+import CadastrarHorario from "./src/screens/logado/stack/CadastrarHorario";
 
-import CadastrarUsuario from "./src/screens/logado/CadastrarUsuario";
+import CadastrarUsuario from "./src/screens/logado/stack/CadastrarUsuario";
 
 
 
