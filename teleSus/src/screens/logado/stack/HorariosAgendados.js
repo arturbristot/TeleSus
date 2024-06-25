@@ -13,25 +13,40 @@ import {
   auth,
   database,
 } from "../../../config/firebaseconfig";
+import { useEffect, useState } from "react";
+import { onSnapshot, query, where } from "firebase/firestore";
 
-const Agendamentos = () => {
-
-  async function obterHorarios() {
+export default function Config() {
+  const [horarios, setHorarios] = useState([]); 
+  useEffect(() => {
     const user = auth.currentUser;
     if (!user) {
       throw new Error("Usuário não encontrado");
+      return;
     }
+
     const consultaCollection = collection(database, "consultas");
+    const q = query(consultaCollection, where("usuarioUid", "==", user.uid));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const list = [];
 
-  }
-};
+      querySnapshot.forEach((doc) => {
+        list.push(doc.data());
+      });
+      setHorarios(list);
+    });
 
-export default function Config() {
-  const navigation = useNavigation(); // Instancie o hook
+    return () => unsubscribe();
+
+  }, []);
 
   return (
     <View style={styles.container}>
-      <FlatList></FlatList>
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        data={horarios}
+
+      />
     </View>
   );
 }

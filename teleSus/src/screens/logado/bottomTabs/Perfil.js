@@ -1,103 +1,78 @@
-import React, { useState } from 'react';
+// Perfil.js
+import React from 'react';
 import { View, Text, StyleSheet, TextInput, Image, TouchableOpacity } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { AntDesign, Feather } from '@expo/vector-icons'; 
- 
+import { AntDesign, Feather, Ionicons, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons'; 
+
 
 export default function Perfil() {
+  
   const navigation = useNavigation();
-  const [isTextInputVisible, setIsTextInputVisible] = useState(false);
-  const [isTextInputVisible2, setIsTextInputVisible2] = useState(false);
-  const [isTextInputVisible3, setIsTextInputVisible3] = useState(false);
-  const [isTextInputVisible4, setIsTextInputVisible4] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const styles = getStyles();
 
   return (
+    
     <View style={styles.container}>
       <View style={styles.vlogo}>
         <Image source={require('../../../images/perfil.png')} style={styles.perfil} />
-        {isTextInputVisible && (
-          <TextInput
-            style={styles.textInput}
-            placeholder="Digite suas novas informações ..."
-            value={inputValue}
-            onChangeText={setInputValue}
-          />
-        )}
-        {isTextInputVisible2 && (
-          <TextInput
-            style={styles.textInput2}
-            placeholder="Digite suas novas informações ..."
-            value={inputValue}
-            onChangeText={setInputValue}
-            
-          />
-          
-        )}
-        {isTextInputVisible3 && (
-          <TextInput
-            style={styles.textInput3}
-            placeholder="Digite suas novas informações ..."
-            value={inputValue}
-            onChangeText={setInputValue}
-          />
-        )}
-        {isTextInputVisible4 && (
-          <TextInput
-            style={styles.textInput4}
-            placeholder="Digite suas novas informações ..."
-            value={inputValue}
-            onChangeText={setInputValue}
-          />
-        )}
-        <TouchableOpacity 
-          style={styles.lapisimg} 
-        >
-          <Feather name="edit-2" size={25} color="#0D47A1" />
-        </TouchableOpacity>
       </View>
+      
+      <TouchableOpacity style={styles.lapisimg} >
+          <Feather name="edit-2" size={25} color="#0D47A1" />
+      </TouchableOpacity>
+      
       <View style={styles.usuario}>
         <Text style={styles.usuarioemail}>usuario@gmail.com</Text>
         <Text style={styles.usuarionome}>Usuario da Silva</Text>
       </View>
+      
       <View style={styles.informacoes}>
+        <TouchableOpacity style={styles.info1} onPress={() => navigation.navigate('info')}>
+          <AntDesign name="user" size={24} color="black" />
+          <Text style={[styles.text1]}>Informações </Text>
+          <AntDesign style={styles.iconset2} name="right" size={24} color="#0D47A1" />
+        </TouchableOpacity>
 
-        <View style={styles.info1}>
-          <Text style={[styles.text1, isTextInputVisible && styles.hidden]}>Nome de exibição</Text>
-          <TouchableOpacity style={[styles.Touchable]} onPress={() => setIsTextInputVisible(!isTextInputVisible)} ><AntDesign style={styles.iconset} name="arrowright" size={24} color="black" /></TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.info2} onPress={() => navigation.navigate('historico')}>
+          <MaterialCommunityIcons name="history" size={24} color="black" />
+          <Text style={[styles.text1]}>Histórico de Consultas </Text>
+          <AntDesign style={styles.iconset2} name="right" size={24} color="#0D47A1" />
+        </TouchableOpacity>
 
-        <View style={styles.info2}>
-          <Text style={[styles.text1, isTextInputVisible2 && styles.hidden]}>Nome de exibição</Text>
-          <TouchableOpacity style={[styles.Touchable]} onPress={() => setIsTextInputVisible2(!isTextInputVisible2)} ><AntDesign style={styles.iconset} name="arrowright" size={24} color="black" /></TouchableOpacity>
-        </View>
+        <TouchableOpacity style={styles.info3} onPress={() => navigation.navigate('privacidade')}>
+          <AntDesign name="lock" size={24} color="black" />
+          <Text style={[styles.text1]}>Privacidade e Segurança</Text>
+          <AntDesign style={styles.iconset2} name="right" size={24} color="#0D47A1" />
+        </TouchableOpacity>
 
-        <View style={styles.info3}>
-          <Text style={[styles.text1, isTextInputVisible3 && styles.hidden]}>Nome de exibição</Text>
-          <TouchableOpacity style={styles.Touchable} onPress={() => setIsTextInputVisible3(!isTextInputVisible3)} ><AntDesign style={styles.iconset} name="arrowright" size={24} color="black" /></TouchableOpacity>
-        </View>
-
-        <View style={styles.info4}>
-          <Text style={[styles.text1, isTextInputVisible4 && styles.hidden]}>Nome de exibição</Text>
-          <TouchableOpacity style={styles.Touchable} onPress={() => setIsTextInputVisible4(!isTextInputVisible4)} ><AntDesign style={styles.iconset} name="arrowright" size={24} color="black" /></TouchableOpacity>
-        </View>
-        
+        <TouchableOpacity style={styles.info4}>
+          <Ionicons name="exit-outline" style={styles.icon} size={24} color="red" />
+          <Text style={[styles.text2]}>Sair da Conta: </Text>
+          <AntDesign style={styles.iconset2} name="right" size={24} color="red" />
+        </TouchableOpacity>
       </View>
+
+     
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  Touchable: {
-    position: 'absolute',
-    marginLeft: 270,
-  },
+const getStyles = () => StyleSheet.create({
   text1: {
-    marginLeft: 10,
-    marginTop: 20,
+    marginLeft: "5%",
+    fontWeight: 'bold'
   },
-  iconset: {
-    marginTop: 20,
+  text2: {
+    marginLeft: "5%",
+    fontWeight: 'bold',
+    color: 'red'
+  },
+  icon: {
+    marginLeft: "1%",
+  },
+  iconset2: {
+    position: 'absolute',
+    marginLeft: "90%",
   },
   info1: {
     display: 'flex',
@@ -105,9 +80,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'none',
     height: 50,
-    width: 300,
+    width: "90%",
     borderBottomWidth: 1,
+    borderBottomColor: 'lightgray',
     marginTop: 30,
+    alignItems: 'center'
   },
   info2:{
     display: 'flex',
@@ -115,9 +92,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'none',
     height: 50,
-    width: 300,
+    width: "90%",
     borderBottomWidth: 1,
-    marginTop: 110,
+    borderBottomColor: 'lightgray',
+    marginTop: 90,
+    alignItems: 'center'
   },
   info3: {
     display: 'flex',
@@ -125,9 +104,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'none',
     height: 50,
-    width: 300,
+    width: "90%",
     borderBottomWidth: 1,
-    marginTop: 190,
+    borderBottomColor: 'lightgray',
+    marginTop: 150,
+    alignItems: 'center'
   },
   info4: {
     display: 'flex',
@@ -135,9 +116,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     backgroundColor: 'none',
     height: 50,
-    width: 300,
+    width: "90%",
     borderBottomWidth: 1,
-    marginTop: 270,
+    borderBottomColor: 'red',
+    marginTop: 210,
+    alignItems: 'center'
   },
   informacoes: {
     display: 'flex',
@@ -157,8 +140,8 @@ const styles = StyleSheet.create({
   },
   lapisimg: { 
     position: 'absolute',
-    marginTop: 90,
-    marginLeft: 230,
+    marginTop: "54%",
+    marginLeft: "59%",
     backgroundColor: '#fff',
     padding: 5,
     borderRadius: 50,
@@ -168,9 +151,11 @@ const styles = StyleSheet.create({
   },
   vlogo: {
     marginTop: 120,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   perfil: {
-    marginLeft: 140,
     width: 120,
     height: 120,
   },
@@ -178,42 +163,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
-  textInput: {
-    position: 'absolute',
-    top: 225, // Ajuste conforme necessário para posicionar o TextInput acima do TouchableOpacity
-    width: 300,
-    height: 40,
-    borderColor: 'gray',
-    paddingLeft: 10,
-    marginLeft: 45, // Centralizando com base na margem da imagem do perfil
+  infoButton: {
+    marginTop: 300, // Ajuste conforme necessário
+    backgroundColor: '#0D47A1',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center',
   },
-  textInput2: {
-    position: 'absolute',
-    top: 305, // Ajuste conforme necessário para posicionar o TextInput acima do TouchableOpacity
-    width: 300,
-    height: 40,
-    borderColor: 'gray',
-    paddingLeft: 10,
-    marginLeft: 45, 
-  },
-  textInput3: {
-    position: 'absolute',
-    top: 385, // Ajuste conforme necessário para posicionar o TextInput acima do TouchableOpacity
-    width: 300,
-    height: 40,
-    borderColor: 'gray',
-    paddingLeft: 10,
-    marginLeft: 45, 
-  },
-  textInput4: {
-    position: 'absolute',
-    top: 465, // Ajuste conforme necessário para posicionar o TextInput acima do TouchableOpacity
-    width: 300,
-    height: 40,
-    borderColor: 'gray',
-    paddingLeft: 10,
-    marginLeft: 45, 
+  infoButtonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
-
-

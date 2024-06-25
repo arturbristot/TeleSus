@@ -9,7 +9,7 @@ import { collection, addDoc, auth, database } from "../../../config/firebaseconf
 const CadastrarHorario = () => {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const data = selectedDate +" " + selectedTime;
+  const data = selectedDate + " " + selectedTime;
 
   const handleDateSelect = (day) => {
     setSelectedDate(day.dateString);

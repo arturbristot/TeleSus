@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native"; // Importe o hook
 import { useState } from "react";
-import { auth } from "../../../config/firebaseconfig";
+import { auth, collection, database, addDoc } from "../../../config/firebaseconfig";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function CadastrarUsuario() {
@@ -29,6 +29,15 @@ export default function CadastrarUsuario() {
       //console.error('Error signing up:', error);
       Alert.alert("Error", error.message);
     }
+
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("Usuário não encontrado");
+    }
+    const usuarioCollection = collection(database, "usuarios");
+    await addDoc(usuarioCollection, {
+      usuarioUid: user.uid,
+    });
   };
 
   const navigation = useNavigation(); // Instancie o hook

@@ -11,6 +11,8 @@ import Config from "./src/screens/logado/bottomTabs/Config";
 import CadastrarHorario from "./src/screens/logado/stack/CadastrarHorario";
 import CadastrarUsuario from "./src/screens/logado/stack/CadastrarUsuario";
 import HorariosAgendados from "./src/screens/logado/stack/HorariosAgendados";
+import Info from "./src/screens/logado/stack/Info";
+import Privacidade from "./src/screens/logado/stack/Privacidade";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -46,15 +48,6 @@ function HomeTabs() {
           ),
         }}
       />
-      <Tab.Screen
-        name="Config"
-        component={Config}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="settings" size={24} color="#006FFD" />
-          ),
-        }}
-      />
     </Tab.Navigator>
   );
 }
@@ -79,6 +72,16 @@ export default function App() {
         <Stack.Screen
           name="HorariosAgendados"
           component={HorariosAgendados}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="info"
+          component={Info}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="privacidade"
+          component={Privacidade}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
