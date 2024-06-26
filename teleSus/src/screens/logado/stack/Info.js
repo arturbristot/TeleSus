@@ -16,10 +16,38 @@ import {
   Fontisto,
   SimpleLineIcons,
 } from "@expo/vector-icons";
+import { useEffect, useState } from "react";
+import { onSnapshot, query, where, doc, deleteDoc } from "firebase/firestore";
+import { collection, auth, database } from "../../../config/firebaseconfig";
 
 export default function Info() {
   const navigation = useNavigation();
   const styles = getStyles();
+  const [perfil, setPefil] = useState([]);
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (!user) {
+      throw new Error("Usuário não encontrado");
+      return;
+    }
+    const consultaCollection = collection(database, "usuarios");
+    const q = query(consultaCollection, where("usuarioUid", "==", user.uid));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      const list = [];
+
+      querySnapshot.forEach((doc) => {
+        list.push({ id: doc.id, ...doc.data() });
+      });
+      setPefil(list);
+    });
+
+    if (perfil.length > 2) {
+      navigation.navigate("Cadastro Dados");
+    }
+
+    return () => unsubscribe();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -35,8 +63,9 @@ export default function Info() {
       </TouchableOpacity>
 
       <View style={styles.usuario}>
-        <Text style={styles.usuarioemail}>usuario@gmail.com</Text>
-        <Text style={styles.usuarionome}>Usuario da Silva</Text>
+        {perfil.length > 0 && (
+            <Text style={styles.usuarioemail}>{perfil[0].email}</Text>
+        )}
       </View>
 
       <View style={styles.informacoes}>

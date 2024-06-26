@@ -23,7 +23,7 @@ export default function CadastrarUsuario() {
         password
       );
       console.log("User registered:", userCredential.user);
-      Alert.alert("conta criada");
+      Alert.alert(password);
       navigation.navigate("Login");
     } catch (error) {
       //console.error('Error signing up:', error);
@@ -37,6 +37,7 @@ export default function CadastrarUsuario() {
     const usuarioCollection = collection(database, "usuarios");
     await addDoc(usuarioCollection, {
       usuarioUid: user.uid,
+      email: user.email,
     });
   };
 

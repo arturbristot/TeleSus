@@ -71,6 +71,7 @@ export default function Login() {
             style={styles.input}
             onChangeText={setPassword}
             value={password}
+            secureTextEntry={true}
           />
         </View>
         <TouchableOpacity
@@ -82,7 +83,7 @@ export default function Login() {
         <View style={styles.criar}>
           <TouchableOpacity
             onPress={() => {
-              navigation.navigate("CadastrarUsuario");
+              navigation.navigate("Cadastrar Usuario");
             }}
           >
             <Text style={styles.recuperar}>Criar conta</Text>

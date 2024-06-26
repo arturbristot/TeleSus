@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity,  } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
@@ -23,7 +23,12 @@ const CadastrarHorario = () => {
   const data = selectedDate + " " + selectedTime;
 
   const handleDateSelect = (day) => {
-    setSelectedDate(day.dateString);
+    const today = new Date().toISOString().split('T')[0]; // Obtém a data atual no formato YYYY-MM-DD
+    if (day.dateString >= today) { 
+      setSelectedDate(day.dateString);
+    } else {
+      alert("A data selecionada não pode ser anterior à data atual.");
+    }
   };
 
   async function submitCadastro() {
@@ -41,7 +46,6 @@ const CadastrarHorario = () => {
       usuarioUid: user.uid,
     });
     navigation.goBack();
-    
   }
 
   return (

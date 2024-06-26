@@ -9,10 +9,10 @@ export default function Home() {
     <View style={styles.container}>
       <Image source={require('../../../images/logo.png')} style={styles.logo} />
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('CadastrarHorario')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Cadastrar Horario')}>
           <Text style={styles.txtbutton}>Cadastrar Horário</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('HorariosAgendados')}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Horarios Agendados')}>
           <Text style={styles.txtbutton}>Horários Agendados</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Suporte')}>

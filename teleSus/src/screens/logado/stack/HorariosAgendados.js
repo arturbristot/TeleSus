@@ -11,7 +11,7 @@ import { onSnapshot, query, where, doc, deleteDoc } from "firebase/firestore";
 import { AntDesign } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 
-export default function Config() {
+export default function HorariosAgendados() {
   const [horarios, setHorarios] = useState([]);
   const navigation = useNavigation();
 
@@ -21,7 +21,6 @@ export default function Config() {
       throw new Error("Usuário não encontrado");
       return;
     }
-
     const consultaCollection = collection(database, "consultas");
     const q = query(consultaCollection, where("usuarioUid", "==", user.uid));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
@@ -79,7 +78,7 @@ export default function Config() {
                 <Text style={{ color: "white" }}>{item.observação}</Text>
               ) : (
                 /* Usamos um operador ternário (condição ? valorSeVerdadeiro : valorSeFalso) dentro do View com style={styles.bottomItem}.
-                item.observação ? ... : ... verifica se item.observação é verdadeiro (ou seja, se tem algum valor).  */
+                  item.observação ? ... : ... verifica se item.observação é verdadeiro (ou seja, se tem algum valor).  */
                 <Text style={{ color: "white" }}>Nenhuma observação</Text>
               )}
               <Text style={{ color: "white" }}>{item.data}</Text>

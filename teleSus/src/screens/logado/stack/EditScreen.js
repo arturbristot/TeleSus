@@ -27,7 +27,12 @@ export default function EditScreen({ route }) {
   };
 
   const handleDateSelect = (day) => {
-    setSelectedDate(day.dateString);
+    const today = new Date().toISOString().split('T')[0]; // Obtém a data atual no formato YYYY-MM-DD
+    if (day.dateString >= today) { 
+      setSelectedDate(day.dateString);
+    } else {
+      alert("A data selecionada não pode ser anterior à data atual.");
+    }
   };
 
   return (

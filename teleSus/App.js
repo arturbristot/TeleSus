@@ -14,6 +14,9 @@ import HorariosAgendados from "./src/screens/logado/stack/HorariosAgendados";
 import Info from "./src/screens/logado/stack/Info";
 import Privacidade from "./src/screens/logado/stack/Privacidade";
 import EditScreen from "./src/screens/logado/stack/EditScreen";
+import Suporte from "./src/screens/logado/stack/Suporte";
+import HistoricoConsulta from "./src/screens/logado/stack/HistoricoConsultas";
+import CadDados from "./src/screens/logado/stack/CadDados";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -64,30 +67,45 @@ export default function App() {
       >
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Home" component={HomeTabs} />
-        <Stack.Screen name="CadastrarUsuario" component={CadastrarUsuario} />
+        <Stack.Screen name="Cadastrar Usuario" component={CadastrarUsuario} />
         <Stack.Screen
-          name="CadastrarHorario"
+          name="Cadastrar Horario"
           component={CadastrarHorario}
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="HorariosAgendados"
+          name="Horarios Agendados"
           component={HorariosAgendados}
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="info"
+          name="Informações"
           component={Info}
           options={{ headerShown: true }}
         />
         <Stack.Screen
-          name="privacidade"
+          name="Privacidade"
           component={Privacidade}
           options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Editar"
           component={EditScreen}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Suporte"
+          component={Suporte}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Historico consultas"
+          component={HistoricoConsulta}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Cadastro Dados"
+          component={CadDados}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>
