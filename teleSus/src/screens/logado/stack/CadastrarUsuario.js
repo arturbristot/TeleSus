@@ -23,11 +23,11 @@ export default function CadastrarUsuario() {
         password
       );
       console.log("User registered:", userCredential.user);
-      Alert.alert(password);
+      Alert.alert("Usuario criado");
       navigation.navigate("Login");
     } catch (error) {
       //console.error('Error signing up:', error);
-      Alert.alert("Error", error.message);
+      Alert.alert("Digite um email e senha validos");
     }
 
     const user = auth.currentUser;

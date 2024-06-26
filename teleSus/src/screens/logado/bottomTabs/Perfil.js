@@ -25,6 +25,11 @@ export default function Perfil() {
   const styles = getStyles();
   const [perfil, setPefil] = useState([]);
 
+  function closeacount(){
+    navigation.goBack()
+    navigation.goBack()
+  }
+
   useEffect(() => {
     const user = auth.currentUser;
     if (!user) {
@@ -110,7 +115,7 @@ export default function Perfil() {
           />
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.info4}>
+        <TouchableOpacity style={styles.info4} onPress={closeacount}>
           <Ionicons
             name="exit-outline"
             style={styles.icon}

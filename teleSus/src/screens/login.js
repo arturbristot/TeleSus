@@ -1,7 +1,7 @@
 import {
   View,
   Text,
-  Button,
+  Alert,
   StyleSheet,
   TextInput,
   TouchableOpacity,
@@ -28,8 +28,8 @@ export default function Login() {
       console.log("User logged in:", userCredential.user);
       navigation.navigate("Home", { idUser: userCredential.user.uid });
     } catch (error) {
-      console.error("Error logging in:", error);
-      //Alert.alert('Error', error.message);
+//      console.error("Error logging in:", error);
+      Alert.alert('Email ou senha invalida');
       setError(true);
     }
   };

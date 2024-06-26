@@ -96,7 +96,7 @@ export default function App() {
         <Stack.Screen
           name="Suporte"
           component={Suporte}
-          options={{ headerShown: true }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Historico consultas"
