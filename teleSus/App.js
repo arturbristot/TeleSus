@@ -13,6 +13,7 @@ import CadastrarUsuario from "./src/screens/logado/stack/CadastrarUsuario";
 import HorariosAgendados from "./src/screens/logado/stack/HorariosAgendados";
 import Info from "./src/screens/logado/stack/Info";
 import Privacidade from "./src/screens/logado/stack/Privacidade";
+import EditScreen from "./src/screens/logado/stack/EditScreen";
 
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
@@ -82,6 +83,11 @@ export default function App() {
         <Stack.Screen
           name="privacidade"
           component={Privacidade}
+          options={{ headerShown: true }}
+        />
+        <Stack.Screen
+          name="Editar"
+          component={EditScreen}
           options={{ headerShown: true }}
         />
       </Stack.Navigator>

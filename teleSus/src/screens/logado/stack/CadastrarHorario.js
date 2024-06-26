@@ -1,11 +1,12 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity,  } from "react-native";
 import { Calendar } from "react-native-calendars";
 import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import {
-  collection,
+  collection, 
   addDoc,
   auth,
   database,
@@ -13,6 +14,7 @@ import {
 import { TextInput } from "react-native-gesture-handler";
 
 const CadastrarHorario = () => {
+  const navigation = useNavigation();
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [selectedMedico, setSelectedMedico] = useState("");
@@ -38,6 +40,8 @@ const CadastrarHorario = () => {
       observação: observação,
       usuarioUid: user.uid,
     });
+    navigation.goBack();
+    
   }
 
   return (
@@ -143,9 +147,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 40,
     borderRadius: 4,
-    borderColor: "#2195F3",
-    backgroundColor: "#2195F3",
-    borderWidth: 2,
+    backgroundColor: "#006FFD",
     justifyContent: "center",
     alignItems: "center",
   },
