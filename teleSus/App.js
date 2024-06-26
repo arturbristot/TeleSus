@@ -7,7 +7,6 @@ import "react-native-gesture-handler";
 import Login from "./src/screens/Login";
 import Home from "./src/screens/logado/bottomTabs/Home";
 import Perfil from "./src/screens/logado/bottomTabs/Perfil";
-import Config from "./src/screens/logado/bottomTabs/Config";
 import CadastrarHorario from "./src/screens/logado/stack/CadastrarHorario";
 import CadastrarUsuario from "./src/screens/logado/stack/CadastrarUsuario";
 import HorariosAgendados from "./src/screens/logado/stack/HorariosAgendados";
